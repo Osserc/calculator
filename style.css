@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-style: solid;
+    width: 318px;
+    height: 75px;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstColumn, .secondColumn, .thirdColumn, .fourthColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.key, .bigKey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    width: 75px;
+    height: 75px;
+}
+
+.bigKey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    height: 156px;
+}
