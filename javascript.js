@@ -10,19 +10,24 @@ let firstOperand = '';
 let secondOperand = '';
 
 function addition (a, b) {
-    result = Math.round((a + b) * 10) / 10;
+    result = Math.round((a + b) * 1000) / 1000;
 }
 
 function subtraction (a, b) {
-    result = Math.round((a - b) * 10) / 10;
+    result = Math.round((a - b) * 1000) / 1000;
 }
 
 function multiplication (a, b) {
-    result = Math.round((a * b) * 10) / 10;
+    result = Math.round((a * b) * 1000) / 1000;
 }
 
 function division (a, b) {
-    result = Math.round((a / b) * 10) / 10;
+    if (b == 0) {
+        result = 'You can\'t divide by zero! Do over or you\'ll be sorry!';
+    } else {
+        result = Math.round((a / b) * 1000) / 1000;  
+    }
+
 }
 
 function operator (firstOperand, secondOperand, operation) {
@@ -44,6 +49,8 @@ function operator (firstOperand, secondOperand, operation) {
 function writeDisplay (singleValue) {
     if ((displayValue == '0') && (singleValue == 0)) {
         return;
+    } else if (((displayValue.includes('.') == true) && (checkDecimals (displayValue))) > 2) {
+        return;
     } else if ((displayValue == '0') && (singleValue != 0)) {
         displayValue = singleValue;        
     } else {
@@ -53,8 +60,35 @@ function writeDisplay (singleValue) {
     document.getElementById("display-current").innerHTML = displayValue;
 }
 
+function addDecimal () {
+    if (displayValue.includes ('.')) {
+        return;
+    } else  if (displayValue == '') {
+        displayValue = '0.';
+    } else {
+        displayValue += '.';
+    }
+    document.getElementById("display-current").innerHTML = displayValue;
+}
+
+function negativize () {
+    if (displayValue.charAt(0) != '-') {
+        displayValue = '-' + displayValue;
+    } else if (displayValue.charAt(0) == '-') {
+        displayValue = displayValue.substring(1);
+    }
+    document.getElementById("display-current").innerHTML = displayValue;
+}
+
+function checkDecimals (a) {
+    let position = displayValue.indexOf('.');
+    let decimals = displayValue.substring(position + 1);
+    return decimals.length;    
+
+}
+
 function cancelNumber () {
-    if ((displayValue != 0) && (displayValue != '')) {
+    if (displayValue != '') {
         displayValue = displayValue.substring(0, displayValue.length - 1);
         document.getElementById("display-current").innerHTML = displayValue;
     } else {
@@ -160,44 +194,6 @@ function executeOperation (a) {
     }
 }
 
-// function addDecimal (singleValue) {
-//     if ((displayValue == '0') && (singleValue == 0)) {
-//         return;
-//     } else if ((displayValue == '0') && (singleValue != 0)) {
-//         displayValue = singleValue;        
-//     } else {
-//         displayValue += singleValue;
-//     }
-
-//     document.getElementById("display-current").innerHTML = displayValue;
-// }
-
-// function negativize () {
-
-// }
-
-
-// function writeDisplay (singleValue) {
-//     if ((displayValue == '0') && (singleValue == 0)) {
-//         return;
-//     } else if ((displayValue == '0') && (singleValue != 0)) {
-//         displayValue = singleValue;        
-//     } else {
-//         displayValue += singleValue;
-//     }
-
-//     document.getElementById("display-current").innerHTML = displayValue;
-// }
-
-// function cancelNumber () {
-//     if ((displayValue != 0) && (displayValue != '')) {
-//         displayValue = displayValue.substring(0, displayValue.length - 1);
-//         document.getElementById("display-current").innerHTML = displayValue;
-//     } else {
-//         return;
-//     }
-// }
-
 //setting up the keys
 const key0 = document.querySelector('.key0');
 key0.addEventListener('click', function () {writeDisplay ('0')});
@@ -238,4 +234,55 @@ keyMultiplication.addEventListener('click', function () {executeOperation (3)});
 const keyDivision = document.querySelector('.keyDivision');
 keyDivision.addEventListener('click', function () {executeOperation (4)});
 const keyEqual = document.querySelector('.keyEqual');
-keyEqual.addEventListener('click', function () {executeOperation (0)})
+keyEqual.addEventListener('click', function () {executeOperation (0)});
+
+//setting up keyboard functionality
+// let keyboard = document.body;
+//         keyboard.addEventListener('keydown', (event) => {
+//             if (`key=${event.key}` == 1) {
+//                 writeDisplay ('1')
+//             }
+//         });
+
+let keyboard = document.body;
+        keyboard.addEventListener('keydown', (event) => {
+            if (event.key == 0) {
+                writeDisplay ('0');
+            } else if (event.key == 1) {
+                writeDisplay ('1');
+            } else if (event.key == 2) {
+                writeDisplay ('2');
+            } else if (event.key == 3) {
+                writeDisplay ('3');
+            } else if (event.key == 4) {
+                writeDisplay ('4');
+            } else if (event.key == 5) {
+                writeDisplay ('5');
+            } else if (event.key == 6) {
+                writeDisplay ('6');
+            } else if (event.key == 7) {
+                writeDisplay ('7');
+            } else if (event.key == 8) {
+                writeDisplay ('8');
+            } else if (event.key == 9) {
+                writeDisplay ('9');
+            } else if ((event.key == 'Backspace') || (event.key == 'Delete')) {
+                cancelNumber ();
+            } else if (event.key == 'Escape') {
+                clearAll ();
+            } else if (event.key == 'Shift') {
+                negativize ();
+            } else if (event.key == '.') {
+                addDecimal ();
+            } else if (event.key == '+') {
+                executeOperation (1);
+            } else if (event.key == '-') {
+                executeOperation (2);
+            } else if (event.key == '/') {
+                executeOperation (3);
+            } else if (event.key == '*') {
+                executeOperation (4);
+            } else if (event.key == 'Enter') {
+                executeOperation (0);
+            }
+        });
