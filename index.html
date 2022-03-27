@@ -10,34 +10,37 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="display">dsdsds</div>
+        <div class="display">
+            <div class="display-history"><span id="display-history"></span></div>
+            <div class="display-current"><span id="display-current"></span></div>
+        </div>
         <div class="keys">
             <div class="firstColumn">
-                <div class="cleanup key">C</div>
-                <div class="digit key">7</div>
-                <div class="digit key">4</div>
-                <div class="digit key">1</div>
-                <div class="key">''</div>
+                <div class="cleanup key keyClear">C</div>
+                <div class="digit key key7">7</div>
+                <div class="digit key key4">4</div>
+                <div class="digit key key1">1</div>
+                <div class="key keyNeg">±</div>
             </div>
             <div class="secondColumn">
-                <div class="operator key">/</div>
-                <div class="digit key">8</div>
-                <div class="digit key">5</div>
-                <div class="digit key">2</div>
-                <div class="digit key">0</div>
+                <div class="operator key keyDivision">/</div>
+                <div class="digit key key8">8</div>
+                <div class="digit key key5">5</div>
+                <div class="digit key key2">2</div>
+                <div class="digit key key0">0</div>
             </div>
             <div class="thirdColumn">
-                <div class="operator key">X</div>
-                <div class="digit key">9</div>
-                <div class="digit key">6</div>
-                <div class="digit key">3</div>
-                <div class="key">''</div>
+                <div class="operator key keyMultiplication">X</div>
+                <div class="digit key key9">9</div>
+                <div class="digit key key6">6</div>
+                <div class="digit key key3">3</div>
+                <div class="key keyDecimal">.</div>
             </div>
             <div class="fourthColumn">
-                <div class="cleanup key">Canc</div>
-                <div class="operator key">-</div>
-                <div class="operator key">+</div>
-                <div class="execute bigKey">=</div>
+                <div class="cleanup key keyCanc">Canc</div>
+                <div class="operator key keyMinus">-</div>
+                <div class="operator key keyPlus">+</div>
+                <div class="execute bigKey keyEqual">=</div>
             </div>
         </div>
     </div>

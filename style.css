@@ -14,8 +14,9 @@ body {
 
 .display {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: column;
     border-style: solid;
     width: 318px;
     height: 75px;
