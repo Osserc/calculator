@@ -114,27 +114,47 @@ function saveOperand () {
 
 }
 
+function changeOperation (a) {
+    chooseOperation (a);
+    chooseSign (a);
+    displayHistory = displayHistory.substring(displayHistory, displayHistory.length - 3) + operationSign;
+    document.getElementById("display-history").innerHTML = displayHistory;
+}
+
 function executeOperation (a) {
     if ((a != 0) && (operation == 0)) {
+        if (displayValue == '') {
+            return;
+        } else {
         saveOperand ();
         chooseOperation (a);
         writeHistorical ();
         displayValue = '';
         document.getElementById("display-current").innerHTML = displayValue;
         primed = 1;
+        }
     } else if ((a == 0) && (operation != 0)) {
+        if (displayValue == '') {
+            changeOperation (a);
+        } else {
         saveOperand ();
         operator (firstOperand, secondOperand, operation);
         firstOperand = result;
         operation = 0;
+        }
+
     } else if ((primed = 1) && (a != 0)) {
-        saveOperand ();
-        operator (firstOperand, secondOperand, operation);
-        firstOperand = result;
-        chooseOperation (a);
-        writeHistorical ();
-        displayValue = '';
-        document.getElementById("display-current").innerHTML = displayValue;
+        if (displayValue == '') {
+            changeOperation (a);
+        } else {
+            saveOperand ();
+            operator (firstOperand, secondOperand, operation);
+            firstOperand = result;
+            chooseOperation (a);
+            writeHistorical ();
+            displayValue = '';
+            document.getElementById("display-current").innerHTML = displayValue;
+        }
     } else if ((a == 0) && (operation == 0)) {
         return;
     }
