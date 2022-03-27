@@ -23,7 +23,7 @@ function multiplication (a, b) {
 
 function division (a, b) {
     if (b == 0) {
-        result = 'You can\'t divide by zero! Do over or you\'ll be sorry!';
+        result = 'You can\'t divide by zero! Do over!';
     } else {
         result = Math.round((a / b) * 1000) / 1000;  
     }
@@ -50,6 +50,8 @@ function writeDisplay (singleValue) {
     if ((displayValue == '0') && (singleValue == 0)) {
         return;
     } else if (((displayValue.includes('.') == true) && (checkDecimals (displayValue))) > 2) {
+        return;
+    } else if (displayValue.length > 10) {
         return;
     } else if ((displayValue == '0') && (singleValue != 0)) {
         displayValue = singleValue;        
@@ -237,13 +239,6 @@ const keyEqual = document.querySelector('.keyEqual');
 keyEqual.addEventListener('click', function () {executeOperation (0)});
 
 //setting up keyboard functionality
-// let keyboard = document.body;
-//         keyboard.addEventListener('keydown', (event) => {
-//             if (`key=${event.key}` == 1) {
-//                 writeDisplay ('1')
-//             }
-//         });
-
 let keyboard = document.body;
         keyboard.addEventListener('keydown', (event) => {
             if (event.key == 0) {
@@ -278,11 +273,16 @@ let keyboard = document.body;
                 executeOperation (1);
             } else if (event.key == '-') {
                 executeOperation (2);
-            } else if (event.key == '/') {
-                executeOperation (3);
             } else if (event.key == '*') {
+                executeOperation (3);
+            } else if (event.key == '/') {
                 executeOperation (4);
             } else if (event.key == 'Enter') {
                 executeOperation (0);
             }
         });
+
+const button = document.querySelector('.button');
+button.addEventListener('click', function () {
+    const spoilerbox = document.querySelectorAll('.explanation').forEach(spoilerbox => spoilerbox.classList.add('de-spoilered'));
+});

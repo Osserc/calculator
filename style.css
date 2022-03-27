@@ -2,6 +2,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: lightgreen;
 }
 
 .calculator {
@@ -10,6 +12,13 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 50px;
+    background-color: black;
+    padding: 25px;
+}
+
+.internal-border {
+    background-color: silver;
+    padding: 10px;
 }
 
 .display {
@@ -19,7 +28,19 @@ body {
     flex-direction: column;
     border-style: solid;
     width: 318px;
-    height: 75px;
+    height: 100px;
+    background-color: yellow;
+}
+
+.display-history, .display-current {
+    background-color: rgb(177, 177, 0);
+    text-align: right;
+    font-weight: bold;
+    margin-right: 15px;
+    border-radius: 25px;
+    padding: 5px 15px;
+    min-width: 235px;
+    min-height: 20px;
 }
 
 .keys {
@@ -42,12 +63,80 @@ body {
     border-style: solid;
     width: 75px;
     height: 75px;
+    font-size: 30px;
+}
+
+.digit {
+    background-color: lightgreen;
+    color: darkgreen;
+    border-color: black;
 }
 
 .bigKey {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
     border-style: solid;
     height: 156px;
+    background-color: skyblue;
+    color: white;
+    border-color: black;
+}
+
+.keyFunction {
+    background-color: orange;
+    color: darkgreen;
+    border-color: black;
+    font-weight: bold;
+}
+
+.keySpecial {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+    font-weight: bold;
+}
+
+.keyClear {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.keyCanc {
+    background-color: indianred;
+    color: white;
+    border-color: black;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: green;
+    color: green;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: lime;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.button-holder {
+    margin-bottom: 10px;
+}
+
+.button {
+    background-color: lightgreen;
+    border-radius: 50px;
+    border-color: lime;
+    color: darkgreen;
+    width: 350px;
+    font-size: 30px;
+}
+
+.de-spoilered {
+    color: lightgreen;
 }
