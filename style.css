@@ -137,6 +137,10 @@ body {
     font-size: 30px;
 }
 
+.explanation div {
+    text-align: center;
+}
+
 .de-spoilered {
     color: lightgreen;
 }
